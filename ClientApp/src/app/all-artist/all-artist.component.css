@@ -1,0 +1,109 @@
+
+table {
+  width: 90%;
+  margin: auto;
+  min-width: 90%;
+  /* background-color: orange; */
+
+
+}
+td{
+  width: 25%;
+  font-size: 16px;
+}
+#artistSortBox{
+  width: 90%;
+  min-width: 90%;
+  margin: auto;
+
+}
+form{
+  background-color: #00FFFF;
+  border-radius: 25px;
+  padding: 10px;
+}
+#genres > div, #languages > div{
+  width: 90%;
+  min-width: 90%;
+  margin: auto;
+  background-color: white;
+  border-radius: 25px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+
+}
+#genres > div > div, #languages > div > div{
+  display: inline-block;
+  margin-right: 10px;
+  /* background-color: red; */
+
+}
+#artists {
+  /* display: flexbox; */
+  background-color: #00FFFF;
+  height: 100px;
+  border-bottom: white 10px solid;
+  border-top: white 5px solid;
+}
+#tail{
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 50px;
+}
+.head{
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 15px;
+  padding-left: 10px;
+}
+.list-items{
+  list-style-type: none;
+  margin: 0px 10px 0px 0px;
+  padding: 0;
+  display: inline;
+}
+
+@media screen and (max-width: 780px){
+  .list-items{
+    /* list-style-type:square; */
+    display: block;
+  }
+  .head{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 15px;
+    /* padding-left: 10px; */
+  }
+}
+@media screen and (max-width: 500px){
+
+  #artists {
+    /* display: flexbox; */
+    background-color: #00FFFF;
+    height: 100px;
+    border-bottom: white 5px solid;
+    border-top: white 0px solid;
+  }
+}
+
+@media screen and (max-width: 325px){
+  .list-items{
+    font-size: 9px;
+    vertical-align: bottom;
+  }
+  #genres > div > div, #languages > div > div{
+    margin-right: 15px;
+  }
+
+  td{
+    font-size: 12px;
+    vertical-align:middle;
+  }
+
+  #artists {
+    /* display: flexbox; */
+    background-color: #00FFFF;
+    height: 100px;
+    border-bottom: white 5px solid;
+    border-top: white 0px solid;
+  }
+}
+

@@ -1,0 +1,98 @@
+<h4 id="tableLabel">Artists</h4>
+
+<p *ngIf="!artists"><em>Loading...</em></p>
+
+<div id="artistSortBox">
+  <h6>Find artists based on their genres and languages</h6>
+  <form [formGroup]="artistSort" (submit) ="artistSorting(artistSort)" class= "form-horizontal">
+    <div id="genres">
+      <label>Genres:</label><br>
+      <div>
+        <div class="checkbox" *ngFor="let genre of genres">
+          <label><input formArrayName="artistGenres" type="checkbox" [value]="genre" name={{genre}} (change)="onGenreCheck($event)"> {{genre}}</label>
+        </div>
+      </div>
+    </div>
+    <div id="languages">
+      <label>Languages:</label><br>
+      <div>
+        <div class="checkbox" *ngFor="let language of languages">
+          <label><input formArrayName="artistLanguages" type="checkbox" [value]="language" name={{language}} (change)="onLanguageCheck($event)"> {{language}}</label>
+        </div>
+      </div>
+    </div>
+      <input class="btn-primary btn-xs" type="submit"  value="Submit">
+  </form>
+</div>
+
+<table  aria-labelledby="tableLabel" >
+  <thead>
+    <tr>
+      <th class="head">Name</th>
+      <th>Country</th>
+      <th>Genres</th>
+      <th>Languages</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="!sortedArtists">
+    <tr id="artists" *ngFor="let artist of artists | paginate: {
+      id: 'allArtistsPagination',
+      itemsPerPage:10,
+      currentPage:page
+    };">
+      <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
+      <td>{{ artist.country }}</td>
+      <td>
+        <ul class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</ul>
+      </td>
+      <td id="tail">
+        <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
+      </td>
+    </tr>
+  </tbody>
+
+  <tbody *ngIf="sortedArtists && sortedArtists.length == 0">
+    <p>None of the artists meet your specifications</p>
+    <tr id="artists" *ngFor="let artist of artists | paginate: {
+      id: 'allArtistsPagination',
+      itemsPerPage:10,
+      currentPage:page
+    };">
+      <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
+      <td>{{ artist.country }}</td>
+      <td>
+        <ul class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</ul>
+      </td>
+      <td id="tail">
+        <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
+      </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="sortedArtists && sortedArtists.length > 0">
+    <tr id="artists" *ngFor="let artist of sortedArtists | paginate: {
+      id: 'sortedArtistsPagination',
+      itemsPerPage:10,
+      currentPage:page
+    };">
+      <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
+      <td>{{ artist.country }}</td>
+      <td>
+        <ul class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</ul>
+      </td>
+      <td id="tail">
+        <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!sortedArtists || (sortedArtists && sortedArtists.length == 0)">
+  <pagination-controls id="allArtistsPagination" maxSize="10" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
+<div *ngIf="sortedArtists && sortedArtists.length > 0">
+  <pagination-controls id="sortedArtistsPagination" maxSize="10" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
+
+
+
+
+

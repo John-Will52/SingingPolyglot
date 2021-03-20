@@ -1,0 +1,23 @@
+<h4 id="tableLabel">About Artist</h4>
+
+<div>
+  <h5>{{artist.name}}</h5>
+  <div>
+    <p>Country:</p>
+    <p>{{artist.country}}</p>
+  </div>
+  <div>
+    <p>Genres:</p>
+    <p *ngFor="let genre of artist.genres">{{genre}}</p>
+  </div>
+  <div>
+    <p>Languages:</p>
+    <p *ngFor="let language of artist.languages">{{language}}</p>
+  </div>
+  <div>
+    <p>Description:</p>
+    <p>{{artist.description}}</p>
+  </div>
+
+  <!-- <button (click)="deleteArtist(artist.id)"></button> -->
+</div>
