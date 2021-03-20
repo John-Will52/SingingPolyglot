@@ -3,7 +3,6 @@ import { ArtistService } from './../artist.service';
 import { Artist } from './artist.interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
