@@ -3,7 +3,7 @@ import { ArtistService } from './../artist.service';
 import { Artist } from './artist.interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {NgxPaginationModule} from 'ngx-pagination';
+// import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -14,29 +14,32 @@ import {NgxPaginationModule} from 'ngx-pagination';
   styleUrls:['./all-artist.component.css']
 })
 export class AllArtistComponent implements OnInit{
-  public numberOfArtists: string;
-  public page: number = 1;
   public artists: Artist[];
-  public sortedArtists: Artist [];
+  public pagination: number[] = [];
+  public pageItems: Artist[] = [];
+  public sortedArtists: Artist[];
+  private numberOfRecordsPerPage: number = 10;
   public genres: string[] = ["R&B","Pop","Rap/Hip-hop","Rock","Soul","Classical","Metal","Techno","EDM","Jazz"];
   public languages: string[] = ["English","Spanish","French","German","Russian", "Japanese", "Korean", "Chinese", "Turkish", "Italian","Arabic"];
+
   constructor(private art: ArtistService, private ROUTER: Router) {
-    this.artistsRenderings();
+
   }
   artistSort = new FormGroup({
     artistGenres: new FormArray([]),
     artistLanguages: new FormArray([])
   })
   ngOnInit(){
-
-    // this.paginationRenderer(this.artists.length);
+    this.artistsRendering();
+    // this.paginationMethod();
   }
 
-  artistsRenderings(){
+  artistsRendering(){
     this.art.getArtists().subscribe(result => {
       this.artists = result;
-      this.numberOfArtists = result.length.toString();
+      this.paginationMethod(result.length);
     }, error => console.error(error));
+
   }
 
   artistSorting(artist: FormGroup){
@@ -45,10 +48,10 @@ export class AllArtistComponent implements OnInit{
     const allArtists = this.artists;
     let genreMatchingArtists: Artist[]= [];
     let filteredArtists : Artist[] = [];
+
     for(let i = 0; i < allArtists.length; i++){
       for(let genreIndex = 0; genreIndex < genres.length; genreIndex++){
         if(allArtists[i].genres.includes(genres[genreIndex])){
-          console.log(allArtists[i].name);
           genreMatchingArtists.push(allArtists[i]);
           break
         }
@@ -63,51 +66,101 @@ export class AllArtistComponent implements OnInit{
     }
   }
     this.sortedArtists = filteredArtists;
+    this.sortedPaginationMethod(filteredArtists.length);
 }
 
   onGenreCheck(event){
+    const artistGenres = this.artistSort.controls.artistGenres.value;
+    const value = event.srcElement.attributes[4].nodeValue;
     if(event.srcElement.checked == true){
-      this.artistSort.controls.artistGenres.value.push(event.srcElement.attributes[4].nodeValue);
+      artistGenres.push(value);
     }
     else if (event.srcElement.checked == false){
-      for(let i =0; i < this.artistSort.controls.artistGenres.value.length; i++){
-        if(event.srcElement.attributes[4].nodeValue == this.artistSort.controls.artistGenres.value[i]){
-          delete this.artistSort.controls.artistGenres.value[i];
-          this.artistSort.controls.artistGenres.value.splice(i,1);
+      for(let i =0; i < artistGenres.length; i++){
+        if(value == artistGenres[i]){
+          delete artistGenres[i];
+          artistGenres.splice(i,1);
         }
       };
     }
-    console.log(this.artistSort.controls.artistGenres.value);
+    console.log(artistGenres);
 
   }
   onLanguageCheck(event){
+    const artistLanguages = this.artistSort.controls.artistLanguages.value;
+    const value = event.srcElement.attributes[4].nodeValue
     if(event.srcElement.checked == true){
-      this.artistSort.controls.artistLanguages.value.push(event.srcElement.attributes[4].nodeValue);
+      artistLanguages.push(value);
     }
     else if (event.srcElement.checked == false){
-      for(let i =0; i < this.artistSort.controls.artistLanguages.value.length; i++){
-        if(event.srcElement.attributes[4].nodeValue == this.artistSort.controls.artistLanguages.value[i]){
-          delete this.artistSort.controls.artistLanguages.value[i];
-          this.artistSort.controls.artistLanguages.value.splice(i,1);
+      for(let i =0; i < artistLanguages.length; i++){
+        if(value == artistLanguages[i]){
+          delete artistLanguages[i];
+          artistLanguages.splice(i,1);
         }
       };
     }
-    console.log(this.artistSort.controls.artistLanguages.value);
+    console.log(artistLanguages);
   }
 
-  paginationRenderer(records : number){
-    const numberOfDocsPerPage = 5;
-    const numberOfPages = records % numberOfDocsPerPage;
-    const array: number[] = [];
-    for(let i = 0; i < this.artists.length; i++){
-      array.push(i);
+  paginationMethod(artistCount : number){
+    console.log(artistCount);
+    const pagesArray: number[] = []
+
+
+    const numberOfPages: number = Math.ceil(artistCount / this.numberOfRecordsPerPage);
+    for(let num = 1; num <= numberOfPages; num++){
+      pagesArray.push(num);
     }
-    this.pagination = array;
-    console.log(array);
-
+    this.pagination = pagesArray;
+    this.turnPage(1);
   }
 
+  turnPage(pageNumber: number){
+    const artists = this.artists;
+    const perPage = this.numberOfRecordsPerPage;
+    let start = ((pageNumber-1) * perPage);
+    let end = (start + (perPage - 1));
+    const artistsForPage: Artist[] = [];
 
+    for(start; start <= end; start++){
+      artistsForPage.push(artists[start]);
+      if(start == artists.length - 1){
+        break
+
+      }
+    }
+    this.pageItems = artistsForPage;
+  }
+
+  sortedPaginationMethod(artistCount : number){
+    console.log(artistCount);
+    const pagesArray: number[] = []
+
+    const numberOfPages: number = Math.ceil(artistCount / this.numberOfRecordsPerPage);
+    for(let num = 1; num <= numberOfPages; num++){
+      pagesArray.push(num);
+    }
+    this.pagination = pagesArray;
+    this.sortedPageTurn(1);
+  }
+
+  sortedPageTurn(pageNumber: number){
+    const artists = this.sortedArtists;
+    const perPage = this.numberOfRecordsPerPage;
+    let start = ((pageNumber-1) * perPage);
+    let end = (start + (perPage - 1));
+    const artistsForPage: Artist[] = [];
+
+    for(start; start <= end; start++){
+      artistsForPage.push(artists[start]);
+      if(start == artists.length - 1){
+        break
+
+      }
+    }
+    this.pageItems = artistsForPage;
+  }
 
 }
 

@@ -3,9 +3,6 @@ table {
   width: 90%;
   margin: auto;
   min-width: 90%;
-  /* background-color: orange; */
-
-
 }
 td{
   width: 25%;
@@ -15,6 +12,21 @@ td{
   width: 90%;
   min-width: 90%;
   margin: auto;
+
+}
+#paginationContainer{
+  display: flex;
+  margin: auto;
+  width: 70%;
+  border: 2px solid black;
+  align-items: center;
+}
+#pagination{
+  display: inline-block;
+  align-self: center;
+  margin: 0px 15px;
+  border: 2px solid black;
+
 
 }
 form{
