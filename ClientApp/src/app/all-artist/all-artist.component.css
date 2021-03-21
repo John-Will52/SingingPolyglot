@@ -14,21 +14,27 @@ td{
   margin: auto;
 
 }
-#paginationContainer{
-  display: flex;
+#paginationSection{
   margin: auto;
-  width: 70%;
-  border: 2px solid black;
-  align-items: center;
+  width: 100%;
+  min-width: 100%;
 }
-#pagination{
+#paginationContainer{
   display: inline-block;
-  align-self: center;
+  width: 100%;
+  /* border: 2px solid black; */
+  text-align: center;
+}
+#paginationContainer > button{
+  display: inline-block;
   margin: 0px 15px;
-  border: 2px solid black;
-
+  color: #FF0000;
+  background-color: transparent;
+  border: none;
 
 }
+/* #pagination{
+} */
 form{
   background-color: #00FFFF;
   border-radius: 25px;

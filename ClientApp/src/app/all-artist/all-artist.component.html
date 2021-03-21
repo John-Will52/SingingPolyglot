@@ -24,7 +24,7 @@
       <input class="btn-primary btn-xs" type="submit"  value="Submit">
   </form>
 </div>
-<p *ngIf="pageItems.length == 0">None of the artists meet your specifications</p>
+<p *ngIf="sortedArtists && sortedArtists.length == 0">None of the artists meet your specifications</p>
 
 <table  aria-labelledby="tableLabel" >
   <thead>
@@ -35,7 +35,7 @@
       <th>Languages</th>
     </tr>
   </thead>
-  <tbody *ngIf="pageItems">
+  <tbody *ngIf="!sortedArtists || (sortedArtists && sortedArtists.length == 0)">
     <tr id="artists" *ngFor="let artist of pageItems">
       <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
       <td>{{ artist.country }}</td>
@@ -47,20 +47,7 @@
       </td>
     </tr>
   </tbody>
-
-  <tbody *ngIf="pageItems.length == 0">
-    <tr id="artists" *ngFor="let artist of artists">
-      <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
-      <td>{{ artist.country }}</td>
-      <td>
-        <ul class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</ul>
-      </td>
-      <td id="tail">
-        <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
-      </td>
-    </tr>
-  </tbody>
-  <!-- <tbody *ngIf="sortedArtists && sortedArtists.length > 0">
+  <tbody *ngIf="sortedArtists">
     <tr id="artists" *ngFor="let artist of pageItems">
       <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
       <td>{{ artist.country }}</td>
@@ -71,11 +58,27 @@
         <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
       </td>
     </tr>
-  </tbody> -->
+  </tbody>
 </table>
-<div id="paginationContainer" *ngIf="pagination.length > 1">
-  <div id="pagination" *ngFor="let page of pagination" (click)="turnPage(page)"> {{ page }}</div>
+<div id="paginationSection" *ngIf="(!sortedArtists || (sortedArtists && sortedArtists.length == 0))" >
+  <div id="paginationContainer">
+    <button id="previous" *ngIf="page > 1" (click)="turnPage((page - 1))">Previous</button>
+    <button id="pagination" (click)="turnPage(1)">1</button>
+    <input type="number" value={{page}} max={{pagination[1]}} min={{pagination[0]}} (change)="inputManager($event)">
+    <button id="pagination" (click)="turnPage(pagination[1])">{{ pagination[1] }}</button>
+    <button id="next" *ngIf="page < pagination[1]" (click)="turnPage((page + 1))">Next</button>
+  </div>
 </div>
+<div id="paginationSection" *ngIf="(sortedArtists && sortedArtists.length > 0)" >
+  <div id="paginationContainer">
+    <button id="previous" *ngIf="page > 1" (click)="sortedPageTurn((page - 1))">Previous</button>
+    <button id="pagination" (click)="sortedPageTurn(1)">1</button>
+    <input type="number" value={{page}} max={{pagination[1]}} min={{pagination[0]}} (change)="inputManager($event)">
+    <button id="pagination" (click)="sortedPageTurn(pagination[1])">{{ pagination[1] }}</button>
+    <button id="next" *ngIf="page < pagination[1]" (click)="sortedPageTurn((page + 1))">Next</button>
+  </div>
+</div>
+
 
 
 

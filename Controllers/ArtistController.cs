@@ -21,6 +21,7 @@ namespace SingingPolyglot.Controllers
        }
 
         
+
         [HttpGet]
         public ActionResult<List<Artist>> GetAllArtists() => _artistService.GetAllArtists();
 
@@ -41,6 +42,7 @@ namespace SingingPolyglot.Controllers
             _artistService.AddArtist(newArtist);
             return CreatedAtRoute("GetArtist", new {id = newArtist.Id }, newArtist);
         }
+ 
         [HttpDelete("{id}")]
         public IActionResult Delete(string id){
             var artist = _artistService.GetArtist(id);
@@ -54,13 +56,7 @@ namespace SingingPolyglot.Controllers
 
             return NoContent();
         }
-        // public ActionResult<Artist> NewArtist(Artist newArtist)
-        // {   
-        //     System.Console.WriteLine(newArtist);
-        //     // return CreatedAtRoute("GetArtist", new {id=newArtist.Id.ToString()}, newArtist);
 
-            
-        // }
         
     }
 }

@@ -7,6 +7,7 @@ namespace SingingPolyglot.Services
 {
     public class ArtistService
     {
+
         private readonly IMongoCollection<Artist> _artists;
 
         public ArtistService (IArtistDatabaseSettings settings)
@@ -22,11 +23,12 @@ namespace SingingPolyglot.Services
         public Artist GetArtist(string id) => _artists.Find<Artist>(artist => artist.Id == id).FirstOrDefault();
 
         public Artist AddArtist(Artist artist)
-        {
+        {     
             _artists.InsertOne(artist);
             return artist;
         }
         public void DeleteArtist(string id) => _artists.DeleteOne(artist => artist.Id == id);
+
         
     }
 }
