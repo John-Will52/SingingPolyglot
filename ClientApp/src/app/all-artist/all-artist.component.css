@@ -16,6 +16,8 @@ table {
   width: 90%;
   margin: auto;
   min-width: 90%;
+  margin-top: 20px;
+  border-radius: 25px;
 }
 td{
   width: 25%;
@@ -25,7 +27,6 @@ td{
   width: 90%;
   min-width: 90%;
   margin: auto;
-
 }
 
 #paginationSection{
@@ -36,19 +37,16 @@ td{
 #paginationContainer{
   display: inline-block;
   width: 100%;
-  /* border: 2px solid black; */
   text-align: center;
 }
 #paginationContainer > button{
   display: inline-block;
   margin: 0px 15px;
-  color: #FF0000;
+  color: #0E1C36;
   background-color: transparent;
   border: none;
 
 }
-/* #pagination{
-} */
 form{
   background-color:#A4A9AD;
   border-radius: 25px;
@@ -66,15 +64,13 @@ form{
 #genres > div > div, #languages > div > div{
   display: inline-block;
   margin-right: 10px;
-  /* background-color: red; */
 
 }
 #artists {
-  /* display: flexbox; */
   background-color:#AFD2E9;
   height: 100px;
-  border-bottom: #DEE7E7 10px solid;
-  border-top: #DEE7E7 5px solid;
+  border-bottom:#DEE7E7 10px solid;
+  border-top:#DEE7E7 5px solid;
 }
 #tail{
   border-top-right-radius: 15px;
@@ -94,19 +90,16 @@ form{
 
 @media screen and (max-width: 780px){
   .list-items{
-    /* list-style-type:square; */
     display: block;
   }
   .head{
     border-top-left-radius: 50px;
     border-bottom-left-radius: 15px;
-    /* padding-left: 10px; */
   }
 }
 @media screen and (max-width: 500px){
 
   #artists {
-    /* display: flexbox; */
     height: 100px;
   }
 }
@@ -126,8 +119,6 @@ form{
   }
 
   #artists {
-    /* display: flexbox; */
-    background-color:#AFD2E9;
     height: 100px;
   }
 }

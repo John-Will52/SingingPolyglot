@@ -7,7 +7,7 @@
   <h6>Find artists based on their genres and/or languages</h6>
   <form [formGroup]="artistSort" (submit) ="artistSorting(artistSort)" class= "form-horizontal">
     <div id="genres">
-      <label>Genres:</label><br>
+      <label><h5>Genres:</h5></label><br>
       <div>
         <div class="checkbox" *ngFor="let genre of genres">
           <label><input formArrayName="artistGenres" type="checkbox" [value]="genre" name={{genre}} (change)="onGenreCheck($event)"> {{genre}}</label>
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div id="languages">
-      <label>Languages:</label><br>
+      <label><h5>Languages:</h5></label><br>
       <div>
         <div class="checkbox" *ngFor="let language of languages">
           <label><input formArrayName="artistLanguages" type="checkbox" [value]="language" name={{language}} (change)="onLanguageCheck($event)"> {{language}}</label>

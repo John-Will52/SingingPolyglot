@@ -2,7 +2,6 @@ import { FormGroup, FormArray } from '@angular/forms';
 import { ArtistService } from './../artist.service';
 import { Artist } from './artist.interface';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 
 
@@ -22,7 +21,7 @@ export class AllArtistComponent implements OnInit{
   public genres: string[] = ["R&B","Pop","Rap/Hip-hop","Rock","Soul","Classical","Metal","Techno","EDM","Jazz"];
   public languages: string[] = ["English","Spanish","French","German","Russian", "Japanese", "Korean", "Chinese", "Turkish", "Italian","Arabic"];
 
-  constructor(private art: ArtistService, private ROUTER: Router) {
+  constructor(private art: ArtistService) {
 
   }
   artistSort = new FormGroup({
@@ -69,7 +68,6 @@ export class AllArtistComponent implements OnInit{
   artistsRendering(){
     this.art.getArtists().subscribe(result => {
       this.artists = result;
-      // this.pageItems = result;
       this.paginationMethod(this.artists.length);
     }, error => console.error(error));
   }
