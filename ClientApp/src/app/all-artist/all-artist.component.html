@@ -1,9 +1,10 @@
-<h4 id="tableLabel">Artists</h4>
+<div id="pageContainer">
+<h3 id="tableLabel">All Artists</h3>
 
 <p *ngIf="!artists"><em>Loading...</em></p>
 
 <div id="artistSortBox">
-  <h6>Find artists based on their genres and languages</h6>
+  <h6>Find artists based on their genres and/or languages</h6>
   <form [formGroup]="artistSort" (submit) ="artistSorting(artistSort)" class= "form-horizontal">
     <div id="genres">
       <label>Genres:</label><br>
@@ -40,10 +41,14 @@
       <td class="head"><a [routerLinkActive]="['link-active']" routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></td>
       <td>{{ artist.country }}</td>
       <td>
-        <ul class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</ul>
+        <ul>
+          <li class="list-items" *ngFor="let genre of artist.genres">{{ genre }}</li>
+        </ul>
       </td>
       <td id="tail">
-        <ul class="list-items" *ngFor="let language of artist.languages">{{ language }}</ul>
+        <ul>
+          <li class="list-items" *ngFor="let language of artist.languages">{{ language }}</li>
+        </ul>
       </td>
     </tr>
   </tbody>
@@ -77,6 +82,7 @@
     <button id="pagination" (click)="sortedPageTurn(pagination[1])">{{ pagination[1] }}</button>
     <button id="next" *ngIf="page < pagination[1]" (click)="sortedPageTurn((page + 1))">Next</button>
   </div>
+</div>
 </div>
 
 

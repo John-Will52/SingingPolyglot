@@ -8,9 +8,20 @@ a {
 code {
   color: #e01a76;
 }
+body{
+  background-color: #DEE7E7;
 
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+.genLangs{
+  /* background-color: #AFD2E9; */
+  display: inline-block;
+  width: 50%;
+  min-width: 50%;
+  vertical-align: top;
 }

@@ -1,23 +1,28 @@
-<h4 id="tableLabel">About Artist</h4>
-
+<h3 id="tableLabel">{{artist.name}}</h3>
 <div>
-  <h5>{{artist.name}}</h5>
-  <div>
-    <p>Country:</p>
-    <p>{{artist.country}}</p>
+  <span><h5>Country: </h5><p>{{artist.country}}</p></span>
+</div>
+<div id="genLangsContainer">
+  <div class="genLangs">
+    <h5>Genres:</h5>
+    <div class="listItems">
+      <ul>
+        <li *ngFor="let genre of artist.genres">{{genre}}</li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <p>Genres:</p>
-    <p *ngFor="let genre of artist.genres">{{genre}}</p>
+  <div class="genLangs">
+    <h5>Languages:</h5>
+    <div class="listItems">
+      <ul>
+        <li *ngFor="let language of artist.languages">{{language}}</li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <p>Languages:</p>
-    <p *ngFor="let language of artist.languages">{{language}}</p>
-  </div>
-  <div>
-    <p>Description:</p>
+</div>
+  <h5>Description:</h5>
+  <div id="description">
     <p>{{artist.description}}</p>
   </div>
 
-  <button (click)="deleteArtist(artist.id)"></button>
-</div>
+

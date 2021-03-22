@@ -10,7 +10,15 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls:['./this-artist.component.css']
 })
 export class ThisArtistComponent implements OnInit{
-  public artist: Artist;
+  public artist: Artist = {
+    id:"",
+    name:"",
+    country: "",
+    genres: [],
+    languages: [],
+    description: ""
+
+  };
 
   constructor(private art: ArtistService, private ROUTE: ActivatedRoute, private ROUTER: Router) {
 

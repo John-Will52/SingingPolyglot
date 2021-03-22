@@ -8,15 +8,17 @@
     <label for="country">Country:</label>
     <input formControlName="artistCountry" type="text" class="form-control" placeholder="Enter the artist's country here" name="country">
   </div>
-
-  <label>Genres (Select all that apply):</label>
-  <div class="checkbox" *ngFor="let genre of genres">
-    <label><input formArrayName="artistGenres" type="checkbox" [value]="genre" name={{genre}} (change)="onGenreCheck($event)"> {{genre}}</label>
+  <div class="genLangs">
+    <label>Genres (Select all that apply):</label>
+    <div class="checkbox" *ngFor="let genre of genres">
+      <label><input formArrayName="artistGenres" type="checkbox" [value]="genre" name={{genre}} (change)="onGenreCheck($event)"> {{genre}}</label>
+    </div>
   </div>
-
-  <label>Languages (Select all that apply):</label>
-  <div class="checkbox" *ngFor="let language of languages">
-    <label><input formArrayName="artistLanguages" type="checkbox" [value]="language" name={{language}} (change)="onLanguageCheck($event)"> {{language}}</label>
+  <div class="genLangs">
+    <label>Languages (Select all that apply):</label>
+    <div class="checkbox" *ngFor="let language of languages">
+      <label><input formArrayName="artistLanguages" type="checkbox" [value]="language" name={{language}} (change)="onLanguageCheck($event)"> {{language}}</label>
+    </div>
   </div>
   <div class="form-group">
     <label for="description">Description:</label>

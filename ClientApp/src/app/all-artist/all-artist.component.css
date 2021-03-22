@@ -1,4 +1,17 @@
 
+label{
+  color: #0E1C36;
+}
+ul{
+  margin: 0px;
+  padding: 0px;
+}
+#tableLabel{
+  color: #0E1C36;
+}
+#artistSortBox > h6{
+  color: #0E1C36;
+}
 table {
   width: 90%;
   margin: auto;
@@ -14,6 +27,7 @@ td{
   margin: auto;
 
 }
+
 #paginationSection{
   margin: auto;
   width: 100%;
@@ -36,7 +50,7 @@ td{
 /* #pagination{
 } */
 form{
-  background-color: #00FFFF;
+  background-color:#A4A9AD;
   border-radius: 25px;
   padding: 10px;
 }
@@ -44,12 +58,10 @@ form{
   width: 90%;
   min-width: 90%;
   margin: auto;
-  background-color: white;
+  background-color: #AFD2E9;
   border-radius: 25px;
   padding: 10px;
   margin-bottom: 10px;
-
-
 }
 #genres > div > div, #languages > div > div{
   display: inline-block;
@@ -59,10 +71,10 @@ form{
 }
 #artists {
   /* display: flexbox; */
-  background-color: #00FFFF;
+  background-color:#AFD2E9;
   height: 100px;
-  border-bottom: white 10px solid;
-  border-top: white 5px solid;
+  border-bottom: #DEE7E7 10px solid;
+  border-top: #DEE7E7 5px solid;
 }
 #tail{
   border-top-right-radius: 15px;
@@ -74,8 +86,8 @@ form{
   padding-left: 10px;
 }
 .list-items{
-  list-style-type: none;
-  margin: 0px 10px 0px 0px;
+  list-style-type: disc;
+  margin-right: 10px;
   padding: 0;
   display: inline;
 }
@@ -95,10 +107,7 @@ form{
 
   #artists {
     /* display: flexbox; */
-    background-color: #00FFFF;
     height: 100px;
-    border-bottom: white 5px solid;
-    border-top: white 0px solid;
   }
 }
 
@@ -118,10 +127,8 @@ form{
 
   #artists {
     /* display: flexbox; */
-    background-color: #00FFFF;
+    background-color:#AFD2E9;
     height: 100px;
-    border-bottom: white 5px solid;
-    border-top: white 0px solid;
   }
 }
 

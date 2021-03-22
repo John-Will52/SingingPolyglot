@@ -1,71 +1,23 @@
-table {
+span> h5, span> p{
+  display: inline-block;
+}
+span> h5{
+  margin-right: 10px;
+}
+#genLangsContainer{
+  /* background-color: #AFD2E9; */
+  min-width: 320px;
   width: 100%;
-  margin: auto;
-  /* background-color: orange; */
-
-
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  height: 150px;
 }
-td{
-  width: 25%;
-}
-
-#artists {
-  /* display: flexbox; */
-  background-color: #00FFFF;
-  height: 100px;
-  border-bottom: white 10px solid;
-  border-top: white 5px solid;
-}
-#tail{
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 50px;
-}
-.head{
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 15px;
-  padding-left: 10px;
-}
-.list-items{
-  list-style-type: none;
-  margin: 0px 10px 0px 0px;
-  padding: 0;
-  display: inline;
-}
-p{
-  display: inline;
-  margin: 10px;
+.genLangs{
+  display: inline-block;
+  width: 50%;
+  min-width: 50%;
 }
 
-@media screen and (max-width: 500px){
-  .list-items{
-    /* list-style-type:square; */
-    display: block;
-  }
-  #artists {
-    /* display: flexbox; */
-    background-color: #00FFFF;
-    height: 100px;
-    border-bottom: white 5px solid;
-    border-top: white 0px solid;
-  }
-}
 
-@media screen and (max-width: 325px){
-  .list-items{
-    font-size: 12px;
-    vertical-align: bottom;
-  }
-
-  td{
-    font-size: 14px;
-    vertical-align:middle;
-  }
-
-  #artists {
-    /* display: flexbox; */
-    background-color: #00FFFF;
-    height: 100px;
-    border-bottom: white 5px solid;
-    border-top: white 0px solid;
-  }
-}
+/* .listItems{
+} */
