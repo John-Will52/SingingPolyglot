@@ -2,20 +2,17 @@
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color:  #0E1C36;
 }
 
-code {
-  color: #e01a76;
-}
 body{
   background-color: #DEE7E7;
 
 }
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  color: #DEE7E7;
+  background-color:  #0E1C36;;
+  border-color: #AFD2E9;
 }
 
 .genLangs{

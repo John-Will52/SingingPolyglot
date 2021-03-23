@@ -1,29 +1,33 @@
 <h3 id="tableLabel">{{artist.name}}</h3>
-<div>
-  <span><h5>Country: </h5><p>{{artist.country}}</p></span>
-</div>
-<div id="genLangsContainer">
-  <div class="genLangs">
-    <h5>Genres:</h5>
-    <div class="listItems">
-      <ul>
-        <li *ngFor="let genre of artist.genres">{{genre}}</li>
-      </ul>
+<img *ngIf="!artist.photoLink" src="assets/images/noPhoto.jpg" alt="This artist does not have a photo" width="250px">
+<img *ngIf="artist.photoLink" src="{{artist.photoLink}}" alt="This artist does not have a photo" width="250px">
+<div id="artistInfo">
+  <div>
+    <span><h5>Country: </h5><p>{{artist.country}}</p></span>
+  </div>
+  <div id="genLangsContainer">
+    <div class="genLangs">
+      <h5>Genres:</h5>
+      <div class="listItems">
+        <ul>
+          <li *ngFor="let genre of artist.genres">{{genre}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="genLangs">
+      <h5>Languages:</h5>
+      <div class="listItems">
+        <ul>
+          <li *ngFor="let language of artist.languages">{{language}}</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="genLangs">
-    <h5>Languages:</h5>
-    <div class="listItems">
-      <ul>
-        <li *ngFor="let language of artist.languages">{{language}}</li>
-      </ul>
-    </div>
-  </div>
-</div>
   <h5>Description:</h5>
   <div id="description">
     <p>{{artist.description}}</p>
   </div>
+</div>
 
   <!-- <button (click)="deleteArtist(artist.id)"></button> -->
 

@@ -4,8 +4,8 @@ export interface Artist {
   description: string;
   genres: string[];
   country: string;
-  // relatedArtists: Artist[];
   languages: string[];
-  // photoLink: string;
+  photoLink: string;
+  // relatedArtists: Artist[];
 
 }

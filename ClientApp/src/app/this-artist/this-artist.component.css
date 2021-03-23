@@ -5,17 +5,17 @@ span> h5{
   margin-right: 10px;
 }
 #genLangsContainer{
-  /* background-color: #AFD2E9; */
   min-width: 320px;
   width: 100%;
-  /* padding-left: 10px;
-  padding-right: 10px; */
   height: 150px;
 }
 .genLangs{
   display: inline-block;
   width: 50%;
   min-width: 50%;
+}
+#artistInfo{
+  margin-top: 20px;
 }
 
 

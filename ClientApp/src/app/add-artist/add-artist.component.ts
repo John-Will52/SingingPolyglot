@@ -29,27 +29,32 @@ export class AddArtistComponent  {
   })
   public genres: string[] = ["R&B","Pop","Rap/Hip-hop","Rock","Soul","Classical","Metal","Techno","EDM","Jazz"];
   public languages: string[] = ["English","Spanish","French","German","Russian", "Japanese", "Korean", "Chinese", "Turkish", "Italian","Arabic"];
+  public errors: Error[] = [];
+
 
   constructor( private art: ArtistService, private ROUTER: Router) {
 
   }
 
   addArtist(artist :FormGroup){
-    console.log(artist.value);
-    this.newArtist.name = artist.value.artistName;
-    this.newArtist.country = artist.value.artistCountry;
-    this.newArtist.genres = artist.value.artistGenres;
-    this.newArtist.languages = artist.value.artistLanguages;
-    this.newArtist.description = artist.value.artistDescription;
-    console.log(this.newArtist);
-    this.art.postArtist(this.newArtist).subscribe((data: Artist) => {
-      console.log(data);
-      this.newArtist = data;
-    })
-
-    this.ROUTER.navigate(['/']);
+    if(artist.valid){
+      this.newArtist.name = artist.value.artistName;
+      this.newArtist.country = artist.value.artistCountry;
+      this.newArtist.genres = artist.value.artistGenres;
+      this.newArtist.languages = artist.value.artistLanguages;
+      this.newArtist.description = artist.value.artistDescription;
+      console.log(this.newArtist);
+      this.art.postArtist(this.newArtist).subscribe((data: Artist) => {
+        console.log(data);
+        this.newArtist = data;
+      })
+      this.ROUTER.navigate(['/']);
+    }
+    else{
+      alert("You must provide artist information in order to add them.")
+      this.ROUTER.navigate(['/add']);
+    }
   }
-
 
   cancel(){
     this.ROUTER.navigate(['/']);
