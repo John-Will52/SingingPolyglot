@@ -18,7 +18,8 @@ export class AddArtistComponent  {
     country: '',
     genres: [],
     languages:[],
-    description:''
+    description:'',
+    photoLink:''
   }
   public artistForm = new FormGroup({
     artistName: new FormControl(''),

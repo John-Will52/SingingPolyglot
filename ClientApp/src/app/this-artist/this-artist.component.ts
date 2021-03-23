@@ -16,7 +16,8 @@ export class ThisArtistComponent implements OnInit{
     country: "",
     genres: [],
     languages: [],
-    description: ""
+    description: "",
+    photoLink: ""
 
   };
 
